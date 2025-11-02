@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=45"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "faturamento"
+version = "0.1.0"
+dependencies = [
+    "pytest",
+    "pytest-cov"
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
