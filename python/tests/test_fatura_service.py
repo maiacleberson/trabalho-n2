@@ -17,9 +17,10 @@ from tests.conftest import MockGatewayPagamento
 def testa_calculo_total(service, qtd, preco, desconto, esperado):
     assert service.calcular_total(qtd, preco, desconto) == pytest.approx(esperado)
 
-def testa_excecao_para_quantidade_invalida(service):
+@pytest.mark.parametrize("qtd", [0, -1])
+def testa_excecao_para_quantidade_invalida(service, qtd):
     with pytest.raises(QuantidadeInvalidaError):
-        service.calcular_total(0, 10.0, 0)
+        service.calcular_total(qtd, 10.0, 0)
 
 def testa_excecao_para_cupom_invalido(service):
     with pytest.raises(CupomInvalidoError):
